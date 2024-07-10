@@ -73,3 +73,4 @@ site_name = "waap-ce-aws-tea"
 aws   = "aws-infra"
 azure = ""
 gcp   = ""
+
