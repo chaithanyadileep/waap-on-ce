@@ -3,8 +3,8 @@ project_prefix = "waap-aws-ce"
 resource_owner = "chthonda"
 
 #AWS INFRA
-aws_region     = "eu-west-1"
-azs           = ["eu-west-1a", "eu-west-1a"]
+aws_region     = "eu-west-3"
+azs           = ["eu-west-3a", "eu-west-3b"]
 
 #Assets
 nic = false
