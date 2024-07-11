@@ -14,14 +14,10 @@ jobs:
   terraform_schedule:
     name: "Test Actions Schedules"
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./xc
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          ref: bot-defense-re
 
       - name: Trigger Deploy workflow
         run: gh workflow run waf-on-ce-aws-apply.yml --ref deploy-waf-aws-ce
