@@ -87,7 +87,7 @@ jobs:
         run: exit 1
 
       - name: Terraform Apply
-        if: github.ref == 'refs/heads/destroy-waf-aws-ce' && github.event_name == 'push'
+        if: github.ref == 'refs/heads/destroy-waf-aws-ce' && ( github.event_name == 'push' || github.event_name == 'workflow_dispatch')
         run: terraform destroy -auto-approve -input=false
 
   terraform_boutique:
@@ -105,6 +105,14 @@ jobs:
         uses: hashicorp/setup-terraform@v3
         with:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+
+      - name: Pull latest code
+        run: |
+          git config --global user.email @${{ github.actor }}
+          git config --global user.name @${{ github.actor }}
+          git remote add upstream https://github.com/f5devcentral/f5-xc-terraform-examples.git
+          git fetch upstream
+          git merge upstream/main --strategy-option theirs --allow-unrelated-histories
 
       - name: Setup Terraform Backend
         id: backend
@@ -160,7 +168,7 @@ jobs:
         run: exit 1
 
       - name: Terraform Apply
-        if: github.ref == 'refs/heads/destroy-waf-aws-ce' && github.event_name == 'push'
+        if: github.ref == 'refs/heads/destroy-waf-aws-ce' && ( github.event_name == 'push' || github.event_name == 'workflow_dispatch')
         run: terraform destroy -auto-approve -input=false
 
   terraform_eks_destroy:
@@ -178,6 +186,14 @@ jobs:
         uses: hashicorp/setup-terraform@v3
         with:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+
+      - name: Pull latest code
+        run: |
+          git config --global user.email @${{ github.actor }}
+          git config --global user.name @${{ github.actor }}
+          git remote add upstream https://github.com/f5devcentral/f5-xc-terraform-examples.git
+          git fetch upstream
+          git merge upstream/main --strategy-option theirs --allow-unrelated-histories
 
       - name: Setup Terraform Backend
         id: backend
@@ -234,7 +250,7 @@ jobs:
         run: exit 1
 
       - name: Terraform Destroy
-        if: github.ref == 'refs/heads/destroy-waf-aws-ce' && github.event_name == 'push'
+        if: github.ref == 'refs/heads/destroy-waf-aws-ce' && ( github.event_name == 'push' || github.event_name == 'workflow_dispatch')
         run: terraform destroy -auto-approve -input=false
 
     
@@ -253,6 +269,14 @@ jobs:
         uses: hashicorp/setup-terraform@v3
         with:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+      
+      - name: Pull latest code
+        run: |
+          git config --global user.email @${{ github.actor }}
+          git config --global user.name @${{ github.actor }}
+          git remote add upstream https://github.com/f5devcentral/f5-xc-terraform-examples.git
+          git fetch upstream
+          git merge upstream/main --strategy-option theirs --allow-unrelated-histories
 
       - name: Setup Terraform Backend
         id: backend
@@ -309,5 +333,5 @@ jobs:
         run: exit 1
 
       - name: Terraform Destroy
-        if: github.ref == 'refs/heads/destroy-waf-aws-ce' && github.event_name == 'push'
+        if: github.ref == 'refs/heads/destroy-waf-aws-ce' && ( github.event_name == 'push' || github.event_name == 'workflow_dispatch')
         run: terraform destroy -auto-approve -input=false
