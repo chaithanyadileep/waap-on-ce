@@ -6,9 +6,9 @@ on:
       - main
   pull_request:
   workflow_dispatch:
-#  schedule:
-#    - cron: '10 * * * *'
-#    - cron: '30 * * * *'
+  schedule:
+    - cron: '5 7 * * *'
+    - cron: '5 8 * * *'
     
 jobs:
   terraform_schedule:
@@ -25,13 +25,13 @@ jobs:
 
       - name: Trigger Deploy workflow
         run: gh workflow run waf-on-ce-aws-apply.yml --ref deploy-waf-aws-ce
-        if: github.event.schedule == '10 * * * *'
+        if: github.event.schedule == '5 7 * * *'
         env:
           GH_TOKEN: ${{ secrets.ACTIONS_SECRET }}   
 
       - name: Trigger Destroy workflow
         run: gh workflow run waf-on-ce-aws-destroy.yml --ref destroy-waf-aws-ce
-        if: github.event.schedule == '10 * * * *' 
+        if: github.event.schedule == '5 8 * * *' 
         env:
           GH_TOKEN: ${{ secrets.ACTIONS_SECRET }}  
           
