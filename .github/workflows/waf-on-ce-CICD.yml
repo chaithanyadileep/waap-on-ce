@@ -31,7 +31,7 @@ jobs:
 
       - name: Trigger Destroy workflow
         run: gh workflow run waf-on-ce-aws-destroy.yml --ref destroy-waf-aws-ce
-        if: github.event.schedule == '30 * * * *' 
+        if: github.event.schedule == '10 * * * *' 
         env:
           GH_TOKEN: ${{ secrets.ACTIONS_SECRET }}  
           
