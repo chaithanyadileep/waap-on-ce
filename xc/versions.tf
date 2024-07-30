@@ -3,7 +3,7 @@ terraform {
   required_providers {
     volterra = {
       source = "volterraedge/volterra"
-      version = "= 0.11.23"
+      version = ">= 0.11.24"
     }
   }
 }
