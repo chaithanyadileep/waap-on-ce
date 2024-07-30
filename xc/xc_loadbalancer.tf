@@ -6,7 +6,8 @@ resource "volterra_service_policy" "allow_all" {
 
 
     rule_list {
-    rules  {
+    rules  = [
+      {
         metadata {
           name = "r1"
         }
@@ -30,6 +31,7 @@ resource "volterra_service_policy" "allow_all" {
         }
         }
       }
+    ]
     }
 }
 
