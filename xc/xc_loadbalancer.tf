@@ -14,7 +14,7 @@ resource "volterra_service_policy" "allow_all" {
           name = "r1"
         }
         spec = {
-          action     = "ALLOW"
+          action     = "ALLOW",
           any_client = true
         }
     ]
