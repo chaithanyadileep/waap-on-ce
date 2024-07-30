@@ -17,6 +17,18 @@ resource "volterra_service_policy" "allow_all" {
           none = true
         }
         }
+      }, 
+      {
+        metadata {
+          name = "r2"
+        }
+        spec {
+          action     = "ALLOW"
+          any_client = true
+          waf_action {
+          none = true
+        }
+        }
       }
     }
 }
