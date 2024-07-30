@@ -13,6 +13,9 @@ resource "volterra_service_policy" "allow_all" {
         spec {
           action     = "ALLOW"
           any_client = true
+          waf_action {
+          none = true
+        }
         }
       }
     }
