@@ -5,20 +5,21 @@ resource "volterra_service_policy" "allow_all" {
     any_server  = true
 
 
-
-    allow_all_requests = true
-    deny_all_requests  = false
     rule_list {
-      rules {
+    rules  {
         metadata {
-        name = "test"
+          name = "r1"
         }
-      spec {
-        action = "ALLOW"
-        any_client = true
+        spec {
+          action     = "ALLOW"
+          any_client = true
+          waf_action {
+          none = true
+        }
+        }
       }
     }
-    }
 }
+
 
 
