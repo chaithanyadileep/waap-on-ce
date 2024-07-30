@@ -10,13 +10,15 @@ resource "volterra_service_policy" "allow_all" {
     deny_all_requests  = false
     rule_list {
     rules = [
+      {
         metadata = {
           name = "r1"
         }
         spec = {
-          action     = "ALLOW",
+          action     = "ALLOW"
           any_client = true
         }
+      }
     ]
     }
 }
