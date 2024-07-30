@@ -9,13 +9,3 @@ resource "volterra_service_policy" "allow_all" {
     allow_all_requests = true
     deny_all_requests  = false
 }
-
-resource "volterra_active_service_policies" "active_staging" {
-    depends_on = [volterra_service_policy.allow_all]
-    namespace = "kvm-on-prem"
-    policies {
-        name = "allow-all-test"
-        namespace = "kvm-on-prem"
-        tenant = "treino-ufahspac"
-    }
-}
