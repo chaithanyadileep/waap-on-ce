@@ -9,8 +9,7 @@ resource "volterra_service_policy" "allow_all" {
     allow_all_requests = true
     deny_all_requests  = false
     rule_list {
-    rules = [
-      {
+    rules {
         metadata = {
           name = "r1"
         }
@@ -19,7 +18,6 @@ resource "volterra_service_policy" "allow_all" {
           any_client = true
         }
       }
-    ]
     }
 }
 
