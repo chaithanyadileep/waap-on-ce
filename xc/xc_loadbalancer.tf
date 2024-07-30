@@ -8,4 +8,16 @@ resource "volterra_service_policy" "allow_all" {
 
     allow_all_requests = true
     deny_all_requests  = false
+    rule_list {
+      rules {
+        metadata {
+        name = "test"
+        }
+      spec {
+        action = "ALLOW"
+        any_client = true
+      }
+    }
+    }
 }
+
