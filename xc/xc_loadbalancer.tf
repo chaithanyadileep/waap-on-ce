@@ -12,7 +12,7 @@ resource "volterra_service_policy" "allow_all" {
 
 resource "volterra_active_service_policies" "active_staging" {
     depends_on = [volterra_service_policy.allow_all]
-    namespace = volterra_namespace.system.name
+    namespace = "kvm-on-prem"
     policies {
         name = "allow-all-test"
         namespace = "kvm-on-prem"
