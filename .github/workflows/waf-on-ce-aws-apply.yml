@@ -3,7 +3,7 @@ name: "F5 XC Ideathon"
 on:
   push:
     branches:
-      - deploy-ideathon
+      - destroy-ideathon
   pull_request:
   workflow_dispatch:
 
@@ -79,5 +79,5 @@ jobs:
         run: exit 1
 
       - name: Terraform Apply
-        if: github.ref == 'refs/heads/deploy-ideathon' && github.event_name == 'push'
-        run: terraform apply -auto-approve -input=false
+        if: github.ref == 'refs/heads/destroy-ideathon' && github.event_name == 'push'
+        run: terraform destroy -auto-approve -input=false
