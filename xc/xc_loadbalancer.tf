@@ -36,9 +36,3 @@ resource "volterra_service_policy" "allow_all" {
   }
 
 }
-
-
-
-
-
-
