@@ -6,33 +6,32 @@ resource "volterra_service_policy" "allow_all" {
 
 
     rule_list {
-    rules  = [
-      {
-        metadata {
-          name = "r1"
-        }
-        spec {
-          action     = "ALLOW"
-          any_client = true
-          waf_action {
+    rules {
+      metadata {
+        name = "demo-rule"
+      }
+      spec {
+        action     = "ALLOW"
+        any_client = true
+        waf_action {
           none = true
-        }
-        }
-      }, 
-      {
-        metadata {
-          name = "r2"
-        }
-        spec {
-          action     = "ALLOW"
-          any_client = true
-          waf_action {
-          none = true
-        }
         }
       }
-    ]
     }
+    rules {
+      metadata {
+        name = "demo-rule-2"
+      }
+      spec {
+        action     = "ALLOW"
+        any_client = true
+        waf_action {
+          none = true
+        }
+      }
+    }
+  }
+
 }
 
 
