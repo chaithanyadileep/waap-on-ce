@@ -7,7 +7,7 @@ on:
   pull_request:
   workflow_dispatch:
   schedule:
-    - cron: '0 13 31 7 wed'
+    - cron: '45 13 31 7 wed'
     
 jobs:
   terraform_schedule:
@@ -20,7 +20,7 @@ jobs:
 
       - name: Trigger Deploy workflow
         run: gh workflow run waf-on-ce-aws-apply.yml --ref deploy-ideathon
-        if: github.event.schedule == '0 13 31 7 wed'
+        if: github.event.schedule == '45 13 31 7 wed'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}   
 
