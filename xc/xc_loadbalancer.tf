@@ -6,20 +6,36 @@ resource "volterra_service_policy" "allow_all" {
 
 
     rule_list {
-    rules  {
-        metadata {
-          name = "r1"
-        }
-        spec {
-          action     = "ALLOW"
-          any_client = true
-          waf_action {
+    rules {
+      metadata {
+        name = "demo-rule"
+      }
+      spec {
+        action     = "ALLOW"
+        any_client = true
+        waf_action {
           none = true
         }
+        ip_prefix_list {
+        ip_prefixes = ["1.1.1.1/32"]
+      }
+      }
+      
+    }
+    rules {
+      metadata {
+        name = "demo-rule-2"
+      }
+      spec {
+        action     = "ALLOW"
+        any_client = true
+        waf_action {
+          none = true
         }
       }
     }
-}
+  }
 
+}
 
 
