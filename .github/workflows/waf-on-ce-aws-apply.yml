@@ -1,4 +1,4 @@
-name: "F5 XC Ideathon"
+name: "Add IP to Deny rule"
 
 on:
   push:
