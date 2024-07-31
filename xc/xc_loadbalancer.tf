@@ -16,10 +16,11 @@ resource "volterra_service_policy" "allow_all" {
         waf_action {
           none = true
         }
-      }
-      ip_prefix_list {
+        ip_prefix_list {
         ip_prefixes = ["192.168.20.0/24"]
       }
+      }
+      
     }
     rules {
       metadata {
