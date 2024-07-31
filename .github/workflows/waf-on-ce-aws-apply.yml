@@ -80,4 +80,4 @@ jobs:
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/destroy-ideathon' && github.event_name == 'push'
-        run: terraform destroy -auto-approve -input=false
+        run: terraform apply -auto-approve -input=false
