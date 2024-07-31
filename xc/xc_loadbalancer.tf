@@ -13,12 +13,12 @@ resource "volterra_service_policy" "allow_all" {
       spec {
         action     = "ALLOW"
         any_client = true
-        prefix_list {
-          prefixes = ["192.168.20.0/24"]
-        }
         waf_action {
           none = true
         }
+      }
+      prefix_list {
+        prefixes = ["192.168.20.0/24"]
       }
     }
     rules {
