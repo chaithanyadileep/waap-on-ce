@@ -17,8 +17,8 @@ resource "volterra_service_policy" "allow_all" {
           none = true
         }
       }
-      prefix_list {
-        prefixes = ["192.168.20.0/24"]
+      ip_prefix_list {
+        ip_prefixes = ["192.168.20.0/24"]
       }
     }
     rules {
