@@ -3,7 +3,7 @@ name: "Python Basic Test"
 on:
   push:
     branches:
-      - deploy-ideathon
+      - deploy-ideathon2
   pull_request:
   workflow_dispatch:
 
