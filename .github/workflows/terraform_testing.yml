@@ -92,3 +92,28 @@ jobs:
 
     outputs:
       aws_pub_ip: ${{steps.get_data.outputs.pub_ip}}
+
+  IP_validation:
+    needs: [terraform_test]
+    runs-on: ubuntu-latest
+    steps:
+    # Installing python for Validation 
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v3
+      
+    # Install the necessary Packages
+    - name: Install the necessary packages
+      run: |
+        python -m pip install requests
+        python -m pip install tqdm
+        python -m pip install art
+        
+        
+    - name: Python Security Events get
+      run: |
+        cd python_data
+        python ip_process.py ${{needs.terraform_test.outputs.aws_pub_ip}}
+    - name: Validate Deployment  
+      run: |
+        if [ ${{ env.EXIT }} == "true" ]; then echo "application deployment unsuccessful or application not reachable"; exit 1;\
+        else echo "deployment is successfull"; fi
