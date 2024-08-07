@@ -3,7 +3,7 @@ name: "Add IP to Deny rule"
 on:
   push:
     branches:
-      - deploy-ideathon2
+      - deploy-ideathon
   pull_request:
   workflow_dispatch:
 
@@ -84,5 +84,5 @@ jobs:
         run: exit 1
 
       - name: Terraform Apply
-        if: github.ref == 'refs/heads/deploy-ideathon2' && ( github.event_name == 'push' || github.event_name == 'workflow_dispatch')
-        run: terraform apply -auto-approve -input=false
+        if: github.ref == 'refs/heads/deploy-ideathon' && ( github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+        run: terraform destroy -auto-approve -input=false
