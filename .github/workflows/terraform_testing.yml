@@ -90,5 +90,5 @@ jobs:
           terraform apply -auto-approve -input=false
           echo pub_ip=$(terraform-bin output -raw ec2_public_ip) >> $GITHUB_OUTPUT
 
-  outputs:
+    outputs:
       aws_pub_ip: ${{steps.get_data.outputs.pub_ip}}
