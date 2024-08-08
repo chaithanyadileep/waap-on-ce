@@ -112,7 +112,7 @@ jobs:
     - name: Python Security Events get
       run: |
         cd python_data
-        export INPUT_STORE=$(python ip_process.py)
+        export INPUT_STORE=$(python ip_process.py ${{needs.terraform_test.outputs.aws_pub_ip}})
         echo "Access direct: "
         echo $INPUT_STORE
     - name: Validate Deployment  
