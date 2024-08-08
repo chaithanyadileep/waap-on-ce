@@ -122,8 +122,8 @@ jobs:
         if [ ${{ env.EXIT }} == "true" ]; then echo "application deployment unsuccessful or application not reachable"; exit 1;\
         else echo "deployment is successfull"; fi
     
-    outputs:
-      processed_ip: ${{steps.processing_ip.outputs.INPUT_STORE}}
+    #outputs:
+    #  processed_ip: ${{steps.processing_ip.outputs.INPUT_STORE}}
 
   cloud_push:
     name: "cloud Push"
