@@ -1,3 +1,3 @@
 output ec2_public_ip {
-  value = "10.1.2.3"
+  value = "192.168.13.2"
 }
