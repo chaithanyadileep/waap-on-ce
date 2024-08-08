@@ -115,6 +115,8 @@ jobs:
         #python ip_process.py ${{needs.terraform_test.outputs.aws_pub_ip}}
         #python test.py
         out=$(python ip_process.py)
+        echo $out
+        echo $(pwd)
     - name: Validate Deployment  
       run: |
         if [ ${{ env.EXIT }} == "true" ]; then echo "application deployment unsuccessful or application not reachable"; exit 1;\
