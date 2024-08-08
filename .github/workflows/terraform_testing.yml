@@ -89,6 +89,7 @@ jobs:
         run: |
           terraform apply -auto-approve -input=false
           echo pub_ip=$(terraform-bin output -raw ec2_public_ip) >> $GITHUB_OUTPUT
+          echo $type(pub_ip)
 
     outputs:
       aws_pub_ip: ${{steps.get_data.outputs.pub_ip}}
@@ -114,8 +115,8 @@ jobs:
       run: |
         cd python_data
         export INPUT_STORE=$(python ip_process.py ${{needs.terraform_test.outputs.aws_pub_ip}})
-        echo "Access direct: "
-        echo $INPUT_STORE >> $GITHUB_OUTPUT
+        #echo "Access direct: "
+        #echo $INPUT_STORE >> $GITHUB_OUTPUT
     
     - name: Validate Deployment  
       run: |
