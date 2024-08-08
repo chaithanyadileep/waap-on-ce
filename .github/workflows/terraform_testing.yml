@@ -110,15 +110,20 @@ jobs:
         
         
     - name: Python Security Events get
+      id: processing_ip
       run: |
         cd python_data
         export INPUT_STORE=$(python ip_process.py ${{needs.terraform_test.outputs.aws_pub_ip}})
         echo "Access direct: "
-        echo $INPUT_STORE
+        echo $INPUT_STORE >> $GITHUB_OUTPUT
+    
     - name: Validate Deployment  
       run: |
         if [ ${{ env.EXIT }} == "true" ]; then echo "application deployment unsuccessful or application not reachable"; exit 1;\
         else echo "deployment is successfull"; fi
+    
+    outputs:
+      processed_ip: ${{steps.processing_ip.outputs.INPUT_STORE}}
 
   cloud_push:
     name: "cloud Push"
@@ -126,7 +131,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./terraform_test
+        working-directory: ./terraform_cloud
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -204,6 +209,6 @@ jobs:
       - name: Terraform Apply
         if: github.ref == 'refs/heads/deploy-ideathon' && ( github.event_name == 'push' || github.event_name == 'workflow_dispatch')
         run: |
-          terraform apply -auto-approve -input=false
+          terraform apply -auto-approve -input=false -var="image_id=hello"
   
 
