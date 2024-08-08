@@ -88,8 +88,7 @@ jobs:
         if: github.ref == 'refs/heads/deploy-ideathon' && ( github.event_name == 'push' || github.event_name == 'workflow_dispatch')
         run: |
           terraform apply -auto-approve -input=false
-          echo pub_ip=$(terraform-bin output -raw ec2_public_ip) >> $GITHUB_OUTPUT
-          echo $type(pub_ip)
+          echo pub_ip=$(terraform-bin output -json ec2_public_ip) >> $GITHUB_OUTPUT
 
     outputs:
       aws_pub_ip: ${{steps.get_data.outputs.pub_ip}}
