@@ -1,5 +1,6 @@
 import sys
 def example(pub_ip):
+    print(type(pub_ip))
     return pub_ip
 
 
