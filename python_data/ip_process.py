@@ -1,6 +1,6 @@
-import sys
-def print_val():
-    return ["1.1.1.1", "2.2.2.2"]
+def example():
+    return "a"
 
 
-print_val()
+if __name__ == "__main__":
+    print(example())

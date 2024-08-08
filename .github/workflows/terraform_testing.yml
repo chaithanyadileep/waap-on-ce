@@ -112,11 +112,9 @@ jobs:
     - name: Python Security Events get
       run: |
         cd python_data
-        #python ip_process.py ${{needs.terraform_test.outputs.aws_pub_ip}}
-        #python test.py
-        echo out=$(python ip_process.py) >> $GITHUB_OUTPUT
-        echo $(out)
-        echo $(pwd)
+        export INPUT_STORE=$(python ip_process.py)
+        echo "Access direct: "
+        echo $INPUT_STORE
     - name: Validate Deployment  
       run: |
         if [ ${{ env.EXIT }} == "true" ]; then echo "application deployment unsuccessful or application not reachable"; exit 1;\
