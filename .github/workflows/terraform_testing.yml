@@ -112,7 +112,8 @@ jobs:
     - name: Python Security Events get
       run: |
         cd python_data
-        python ip_process.py ${{needs.terraform_test.outputs.aws_pub_ip}}
+        #python ip_process.py ${{needs.terraform_test.outputs.aws_pub_ip}}
+        python test.py
     - name: Validate Deployment  
       run: |
         if [ ${{ env.EXIT }} == "true" ]; then echo "application deployment unsuccessful or application not reachable"; exit 1;\
