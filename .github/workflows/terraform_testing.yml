@@ -115,7 +115,7 @@ jobs:
         #python ip_process.py ${{needs.terraform_test.outputs.aws_pub_ip}}
         #python test.py
         out=$(python ip_process.py)
-        echo $out
+        echo $(out)
         echo $(pwd)
     - name: Validate Deployment  
       run: |
